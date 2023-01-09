@@ -13,7 +13,7 @@ function getitem(e){
     // let objtostr = JSON.stringify(obj)
     // localStorage.setItem(obj.email,objtostr)
     
-        axios.post("https://crudcrud.com/api/708dc7dc27834e86877d8be970ce7689/appointmentdata",obj)
+        axios.post("https://crudcrud.com/api/727aea2bc88944b1bd1ffd40a4b6c347/appointmentdata",obj)
             .then((response)=>{
                 displayonsreen(response.data)
                 console.log(response)
@@ -30,7 +30,7 @@ function getitem(e){
 
 }
 window.addEventListener('DOMContentLoaded',()=>{
-    axios.get("https://crudcrud.com/api/708dc7dc27834e86877d8be970ce7689/appointmentdata")
+    axios.get("https://crudcrud.com/api/727aea2bc88944b1bd1ffd40a4b6c347/appointmentdata")
             .then((response)=>{
                 
                 console.log(response)
@@ -57,17 +57,29 @@ window.addEventListener('DOMContentLoaded',()=>{
 })
 
 function displayonsreen(obj){
-    var li = `<li id = '${obj.email}'> ${obj.email} ${obj.name} <button onclick = "deleting('${obj.email}')" >delete</button> <button onclick = "editing('${obj.email}')">Edit</button></li>`
+    var li = `<li id = '${obj._id}'> ${obj.email} ${obj.name} <button onclick = "deleting('${obj._id}')" >delete</button> <button onclick = "editing('${obj._id}')">Edit</button></li>`
     var ul = document.getElementById('ul')
     ul.innerHTML = ul.innerHTML+li
 
     
 }
 
-function deleting(e){
+function deleting(objId){
+    axios.delete(`https://crudcrud.com/api/727aea2bc88944b1bd1ffd40a4b6c347/appointmentdata/${objId}`)
+            .then((response)=>{
+                deletefromscreen(objId)
+
+            }).catch((err)=>{
+                document.body.innerHTML = document.body.innerHTML + "<h3> something went wrong </h3>"
+                console.log(err)
+            })
+
     
 }
-function deletefromscreen(e){
+function deletefromscreen(objId){
+    var parent = document.getElementById('ul')
+    var child = document.getElementById(objId)
+    parent.removeChild(child)
     
 }
 
