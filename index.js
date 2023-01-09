@@ -65,28 +65,10 @@ function displayonsreen(obj){
 }
 
 function deleting(e){
-    // localStorage.removeItem(e)
-    // deletefromscreen(e)
-    const user = e.path[1];
-    axios
-    .delete('https://crudcrud.com/api/708dc7dc27834e86877d8be970ce7689/appointmentdata/${user.id}')
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-    e.path[1].remove();
+    
 }
 function deletefromscreen(e){
-    // var parent = document.getElementById('ul')
-    // var child = document.getElementById(e)
-    // parent.removeChild(child)
-
-    // axios.delete("https://crudcrud.com/api/708dc7dc27834e86877d8be970ce7689/appointmentdata")
-    //     .then((res)=>{
-    //         console.log(res)
-    //     }).catch((err)=>{
-    //         console.log(err)
-
-    //     })
-        
+    
 }
 
 function editing(e){
