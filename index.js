@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 })
 
 function displayonsreen(obj){
-    var li = `<li id = '${obj._id}'> ${obj.email} ${obj.name} <button onclick = "deleting('${obj._id}')" >delete</button> <button onclick = "editing('${obj._id}')">Edit</button></li>`
+    var li = `<li id = '${obj._id}'> ${obj.email} ${obj.name} <button onclick = "deleting('${obj._id}')" >delete</button> <button onclick = "editing('${obj.email}')">Edit</button></li>`
     var ul = document.getElementById('ul')
     ul.innerHTML = ul.innerHTML+li
 
@@ -83,11 +83,13 @@ function deletefromscreen(objId){
     
 }
 
-function editing(e){
-    var emailvalue = JSON.parse(localStorage.getItem(e)).email;
-    var namevalue = JSON.parse(localStorage.getItem(e)).name;
+function editing(email,name){
+    // var emailvalue = JSON.parse(localStorage.getItem(e)).email;
+    // var namevalue = JSON.parse(localStorage.getItem(e)).name;
 
-    document.getElementById("emailtype").value =emailvalue ;
-    document.getElementById("nametype").value = namevalue;
-
+    document.getElementById("emailtype").value =email;
+    document.getElementsByClassName("nametype").value = name
+    console.log(document.getElementById("emailtype").value)
+    
+    
 }
